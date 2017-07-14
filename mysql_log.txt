@@ -1,0 +1,134 @@
+[16:55:39] [WARNING] CMySQLResult::GetRowDataByName - field not found ("skin2")
+[17:01:15] [WARNING] CMySQLResult::GetRowDataByName - field not found ("skin2")
+[17:03:20] [WARNING] CMySQLResult::GetRowDataByName - field not found ("skin2")
+[08:13:51] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:51] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:51] [ERROR] CMySQLQuery::Execute[()] - (error #2006) MySQL server has gone away
+[08:13:51] [WARNING] CMySQLQuery::Execute[()] - lost connection, reconnecting..
+[08:13:51] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:51] [ERROR] CMySQLQuery::Execute[HintLoad()] - (error #2006) MySQL server has gone away
+[08:13:51] [WARNING] CMySQLQuery::Execute[HintLoad()] - lost connection, reconnecting..
+[08:13:51] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:51] [ERROR] CMySQLQuery::Execute[CasinoLoad()] - (error #2006) MySQL server has gone away
+[08:13:51] [WARNING] CMySQLQuery::Execute[CasinoLoad()] - lost connection, reconnecting..
+[08:13:51] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:51] [ERROR] CMySQLQuery::Execute[HouseLoad()] - (error #2006) MySQL server has gone away
+[08:13:51] [WARNING] CMySQLQuery::Execute[HouseLoad()] - lost connection, reconnecting..
+[08:13:51] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:51] [ERROR] CMySQLQuery::Execute[TransportLoad()] - (error #2006) MySQL server has gone away
+[08:13:51] [WARNING] CMySQLQuery::Execute[TransportLoad()] - lost connection, reconnecting..
+[08:13:51] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:51] [ERROR] CMySQLQuery::Execute[FuelLoad()] - (error #2006) MySQL server has gone away
+[08:13:51] [WARNING] CMySQLQuery::Execute[FuelLoad()] - lost connection, reconnecting..
+[08:13:51] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:51] [ERROR] CMySQLQuery::Execute[GangLoad()] - (error #2006) MySQL server has gone away
+[08:13:51] [WARNING] CMySQLQuery::Execute[GangLoad()] - lost connection, reconnecting..
+[08:13:51] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:51] [ERROR] CMySQLQuery::Execute[BintsLoad()] - (error #2006) MySQL server has gone away
+[08:13:51] [WARNING] CMySQLQuery::Execute[BintsLoad()] - lost connection, reconnecting..
+[08:13:51] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:51] [ERROR] CMySQLQuery::Execute[BusinessLoad()] - (error #2006) MySQL server has gone away
+[08:13:51] [WARNING] CMySQLQuery::Execute[BusinessLoad()] - lost connection, reconnecting..
+[08:13:51] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:52] [ERROR] CMySQLQuery::Execute[GangzoneLoad()] - (error #2006) MySQL server has gone away
+[08:13:52] [WARNING] CMySQLQuery::Execute[GangzoneLoad()] - lost connection, reconnecting..
+[08:13:52] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:52] [ERROR] CMySQLQuery::Execute[ServerdataLoad()] - (error #2006) MySQL server has gone away
+[08:13:52] [WARNING] CMySQLQuery::Execute[ServerdataLoad()] - lost connection, reconnecting..
+[08:13:52] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[08:13:52] [ERROR] CMySQLQuery::Execute[NewsMoneyLoad()] - (error #2006) MySQL server has gone away
+[08:13:52] [WARNING] CMySQLQuery::Execute[NewsMoneyLoad()] - lost connection, reconnecting..
+[08:13:52] [WARNING] CMySQLConnection::Disconnect - no connection available
+[08:13:52] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'admin'@'localhost' (using password: YES)
+[10:33:12] [WARNING] CMySQLResult::GetRowDataByName - field not found ("skin2")
+[10:33:12] [WARNING] CMySQLResult::GetRowDataByName - field not found ("helper")
+[10:39:55] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:39:56] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:39:56] [ERROR] CMySQLQuery::Execute[()] - (error #2006) MySQL server has gone away
+[10:39:56] [WARNING] CMySQLQuery::Execute[()] - lost connection, reconnecting..
+[10:39:57] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:39:58] [ERROR] CMySQLQuery::Execute[HintLoad()] - (error #2006) MySQL server has gone away
+[10:39:58] [WARNING] CMySQLQuery::Execute[HintLoad()] - lost connection, reconnecting..
+[10:39:59] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:39:59] [ERROR] CMySQLQuery::Execute[CasinoLoad()] - (error #2006) MySQL server has gone away
+[10:39:59] [WARNING] CMySQLQuery::Execute[CasinoLoad()] - lost connection, reconnecting..
+[10:40:00] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:40:00] [ERROR] CMySQLQuery::Execute[HouseLoad()] - (error #2006) MySQL server has gone away
+[10:40:00] [WARNING] CMySQLQuery::Execute[HouseLoad()] - lost connection, reconnecting..
+[10:40:01] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:40:01] [ERROR] CMySQLQuery::Execute[TransportLoad()] - (error #2006) MySQL server has gone away
+[10:40:01] [WARNING] CMySQLQuery::Execute[TransportLoad()] - lost connection, reconnecting..
+[10:40:02] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:40:02] [ERROR] CMySQLQuery::Execute[FuelLoad()] - (error #2006) MySQL server has gone away
+[10:40:02] [WARNING] CMySQLQuery::Execute[FuelLoad()] - lost connection, reconnecting..
+[10:40:03] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:40:03] [ERROR] CMySQLQuery::Execute[GangLoad()] - (error #2006) MySQL server has gone away
+[10:40:03] [WARNING] CMySQLQuery::Execute[GangLoad()] - lost connection, reconnecting..
+[10:40:04] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:40:04] [ERROR] CMySQLQuery::Execute[BintsLoad()] - (error #2006) MySQL server has gone away
+[10:40:04] [WARNING] CMySQLQuery::Execute[BintsLoad()] - lost connection, reconnecting..
+[10:40:05] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:40:05] [ERROR] CMySQLQuery::Execute[BusinessLoad()] - (error #2006) MySQL server has gone away
+[10:40:05] [WARNING] CMySQLQuery::Execute[BusinessLoad()] - lost connection, reconnecting..
+[10:40:06] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:40:06] [ERROR] CMySQLQuery::Execute[GangzoneLoad()] - (error #2006) MySQL server has gone away
+[10:40:06] [WARNING] CMySQLQuery::Execute[GangzoneLoad()] - lost connection, reconnecting..
+[10:40:07] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:40:07] [ERROR] CMySQLQuery::Execute[ServerdataLoad()] - (error #2006) MySQL server has gone away
+[10:40:07] [WARNING] CMySQLQuery::Execute[ServerdataLoad()] - lost connection, reconnecting..
+[10:40:08] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[10:40:08] [ERROR] CMySQLQuery::Execute[NewsMoneyLoad()] - (error #2006) MySQL server has gone away
+[10:40:08] [WARNING] CMySQLQuery::Execute[NewsMoneyLoad()] - lost connection, reconnecting..
+[10:40:08] [WARNING] CMySQLConnection::Disconnect - no connection available
+[10:40:10] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on 'localhost' (10061)
+[02:24:17] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:17] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:17] [ERROR] CMySQLQuery::Execute[()] - (error #2006) MySQL server has gone away
+[02:24:17] [WARNING] CMySQLQuery::Execute[()] - lost connection, reconnecting..
+[02:24:17] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:17] [ERROR] CMySQLQuery::Execute[HintLoad()] - (error #2006) MySQL server has gone away
+[02:24:17] [WARNING] CMySQLQuery::Execute[HintLoad()] - lost connection, reconnecting..
+[02:24:17] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:17] [ERROR] CMySQLQuery::Execute[CasinoLoad()] - (error #2006) MySQL server has gone away
+[02:24:17] [WARNING] CMySQLQuery::Execute[CasinoLoad()] - lost connection, reconnecting..
+[02:24:17] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:17] [ERROR] CMySQLQuery::Execute[HouseLoad()] - (error #2006) MySQL server has gone away
+[02:24:17] [WARNING] CMySQLQuery::Execute[HouseLoad()] - lost connection, reconnecting..
+[02:24:17] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:17] [ERROR] CMySQLQuery::Execute[TransportLoad()] - (error #2006) MySQL server has gone away
+[02:24:17] [WARNING] CMySQLQuery::Execute[TransportLoad()] - lost connection, reconnecting..
+[02:24:17] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:18] [ERROR] CMySQLQuery::Execute[FuelLoad()] - (error #2006) MySQL server has gone away
+[02:24:18] [WARNING] CMySQLQuery::Execute[FuelLoad()] - lost connection, reconnecting..
+[02:24:18] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:18] [ERROR] CMySQLQuery::Execute[GangLoad()] - (error #2006) MySQL server has gone away
+[02:24:18] [WARNING] CMySQLQuery::Execute[GangLoad()] - lost connection, reconnecting..
+[02:24:18] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:18] [ERROR] CMySQLQuery::Execute[BintsLoad()] - (error #2006) MySQL server has gone away
+[02:24:18] [WARNING] CMySQLQuery::Execute[BintsLoad()] - lost connection, reconnecting..
+[02:24:18] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:18] [ERROR] CMySQLQuery::Execute[BusinessLoad()] - (error #2006) MySQL server has gone away
+[02:24:18] [WARNING] CMySQLQuery::Execute[BusinessLoad()] - lost connection, reconnecting..
+[02:24:18] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:18] [ERROR] CMySQLQuery::Execute[GangzoneLoad()] - (error #2006) MySQL server has gone away
+[02:24:18] [WARNING] CMySQLQuery::Execute[GangzoneLoad()] - lost connection, reconnecting..
+[02:24:18] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:18] [ERROR] CMySQLQuery::Execute[ServerdataLoad()] - (error #2006) MySQL server has gone away
+[02:24:18] [WARNING] CMySQLQuery::Execute[ServerdataLoad()] - lost connection, reconnecting..
+[02:24:18] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:24:18] [ERROR] CMySQLQuery::Execute[NewsMoneyLoad()] - (error #2006) MySQL server has gone away
+[02:24:18] [WARNING] CMySQLQuery::Execute[NewsMoneyLoad()] - lost connection, reconnecting..
+[02:24:18] [WARNING] CMySQLConnection::Disconnect - no connection available
+[02:24:18] [ERROR] CMySQLConnection::Connect - (error #1049) Unknown database 'asdfasdf'
+[02:26:07] [WARNING] CMySQLResult::GetRowDataByName - field not found ("skin2")
+[02:26:07] [WARNING] CMySQLResult::GetRowDataByName - field not found ("helper")
+[02:26:51] [WARNING] CMySQLResult::GetRowDataByName - field not found ("skin2")
+[02:26:51] [WARNING] CMySQLResult::GetRowDataByName - field not found ("helper")
+[03:08:55] [WARNING] CMySQLResult::GetRowDataByName - field not found ("skin2")
+[03:08:55] [WARNING] CMySQLResult::GetRowDataByName - field not found ("helper")
+[14:21:58] [WARNING] CMySQLResult::GetRowDataByName - field not found ("skin2")
+[14:21:58] [WARNING] CMySQLResult::GetRowDataByName - field not found ("helper")
+[14:22:59] [WARNING] CMySQLResult::GetRowDataByName - field not found ("skin2")
+[14:22:59] [WARNING] CMySQLResult::GetRowDataByName - field not found ("helper")
+[14:27:24] [WARNING] CMySQLResult::GetRowDataByName - field not found ("skin2")
+[14:27:24] [WARNING] CMySQLResult::GetRowDataByName - field not found ("helper")

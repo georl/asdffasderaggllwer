@@ -1,0 +1,455 @@
+
+--------------------------
+SA-MP Server: 0.3.7
+
+Exception At Address: 0x0048EA0A Module: (samp-server.exe)
+
+Registers:
+EAX: 0x69746E41	EBX: 0x00000000	ECX: 0x02389660	EDX: 0x00000000
+ESI: 0x00000010	EDI: 0x02389660	EBP: 0x00000000	ESP: 0x0019FE18
+EFLAGS: 0x00010206
+
+Stack:
++0000: 0x00000000   0x0048EA17   0x746F9800   0x00000000
++0010: 0x00000000   0x0048AC5D   0x00000000   0x000023F0
++0020: 0x0019FF80   0x002F9000   0x00010010   0x00010001
++0030: 0x000000C8   0x00001E61   0x000001F4   0x00001688
++0040: 0x02389D28   0x656D6167   0x65646F6D   0x00003531
++0050: 0x004C0014   0x004C0010   0x002F9000   0x004A9B60
++0060: 0x0019FE68   0x0019FF70   0x0019FF70   0x0049B938
++0070: 0x004B6698   0xFFFFFFFF   0x00499BD1   0x00499BE1
++0080: 0x004A9B60   0x0019FF70   0x004A97D1   0xFFFFFFFF
++0090: 0x0049B3D6   0x00000001   0x023814A8   0x02381500
++00A0: 0x00000094   0x00000006   0x00000002   0x000023F0
++00B0: 0x00000002   0x00000000   0x00000000   0x00000000
++00C0: 0x00000000   0x00000000   0x00000000   0x00000000
++00D0: 0x00000000   0x00000000   0x00000000   0x00000000
++00E0: 0x00000000   0x00000000   0x00000000   0x00000000
++00F0: 0x00000000   0x00000000   0x00000000   0x00000000
++0100: 0x00000000   0x00000000   0x00000000   0x00000000
++0110: 0x00000000   0x00000000   0x00000000   0x00000000
++0120: 0x00000000   0x00000000   0x00000000   0x00000000
++0130: 0x0049B282   0x0049B26A   0x0049B26A   0x002F9000
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x004FA000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\samp-server.exe)
+ntdll.dll	A: 0x775E0000 - 0x77763000	(C:\Windows\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x746D0000 - 0x747B0000	(C:\Windows\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x740C0000 - 0x74261000	(C:\Windows\System32\KERNELBASE.dll)
+apphelp.dll	A: 0x73630000 - 0x736C2000	(C:\Windows\system32\apphelp.dll)
+SHELL32.dll	A: 0x75200000 - 0x765D9000	(C:\Windows\System32\SHELL32.dll)
+msvcrt.dll	A: 0x76860000 - 0x7691E000	(C:\Windows\System32\msvcrt.dll)
+cfgmgr32.dll	A: 0x767C0000 - 0x767F6000	(C:\Windows\System32\cfgmgr32.dll)
+windows.storage.dll	A: 0x76C90000 - 0x771FE000	(C:\Windows\System32\windows.storage.dll)
+combase.dll	A: 0x74C50000 - 0x74E61000	(C:\Windows\System32\combase.dll)
+ucrtbase.dll	A: 0x76920000 - 0x76A00000	(C:\Windows\System32\ucrtbase.dll)
+RPCRT4.dll	A: 0x74270000 - 0x74331000	(C:\Windows\System32\RPCRT4.dll)
+SspiCli.dll	A: 0x740A0000 - 0x740BE000	(C:\Windows\System32\SspiCli.dll)
+CRYPTBASE.dll	A: 0x74090000 - 0x7409A000	(C:\Windows\System32\CRYPTBASE.dll)
+bcryptPrimitives.dll	A: 0x76800000 - 0x7685A000	(C:\Windows\System32\bcryptPrimitives.dll)
+sechost.dll	A: 0x74E80000 - 0x74EC1000	(C:\Windows\System32\sechost.dll)
+powrprof.dll	A: 0x74FC0000 - 0x75005000	(C:\Windows\System32\powrprof.dll)
+advapi32.dll	A: 0x77200000 - 0x77277000	(C:\Windows\System32\advapi32.dll)
+shlwapi.dll	A: 0x74530000 - 0x74576000	(C:\Windows\System32\shlwapi.dll)
+GDI32.dll	A: 0x76AA0000 - 0x76ACB000	(C:\Windows\System32\GDI32.dll)
+gdi32full.dll	A: 0x76AD0000 - 0x76C2B000	(C:\Windows\System32\gdi32full.dll)
+USER32.dll	A: 0x74340000 - 0x7449F000	(C:\Windows\System32\USER32.dll)
+win32u.dll	A: 0x76C30000 - 0x76C45000	(C:\Windows\System32\win32u.dll)
+kernel.appcore.dll	A: 0x76C50000 - 0x76C5D000	(C:\Windows\System32\kernel.appcore.dll)
+shcore.dll	A: 0x744A0000 - 0x74528000	(C:\Windows\System32\shcore.dll)
+profapi.dll	A: 0x751F0000 - 0x751FF000	(C:\Windows\System32\profapi.dll)
+WSOCK32.dll	A: 0x67F20000 - 0x67F28000	(C:\Windows\SYSTEM32\WSOCK32.dll)
+WINMM.dll	A: 0x730E0000 - 0x73104000	(C:\Windows\SYSTEM32\WINMM.dll)
+WS2_32.dll	A: 0x74BE0000 - 0x74C43000	(C:\Windows\System32\WS2_32.dll)
+WINMMBASE.dll	A: 0x73030000 - 0x73053000	(C:\Windows\SYSTEM32\WINMMBASE.dll)
+IMM32.DLL	A: 0x76C60000 - 0x76C85000	(C:\Windows\System32\IMM32.DLL)
+streamer.DLL	A: 0x70670000 - 0x706AE000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\streamer.DLL)
+MSVCP100.dll	A: 0x607F0000 - 0x60859000	(C:\Windows\SYSTEM32\MSVCP100.dll)
+MSVCR100.dll	A: 0x5A290000 - 0x5A34F000	(C:\Windows\SYSTEM32\MSVCR100.dll)
+mysql.DLL	A: 0x701D0000 - 0x702A4000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\mysql.DLL)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\LIBMYSQL.dll)
+MSVCR110.dll	A: 0x6D090000 - 0x6D166000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCR110.dll)
+MSVCP110.dll	A: 0x6D1E0000 - 0x6D265000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCP110.dll)
+napinsp.dll	A: 0x72DE0000 - 0x72DF2000	(C:\Windows\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x72C30000 - 0x72C46000	(C:\Windows\system32\pnrpnsp.dll)
+NLAapi.dll	A: 0x72A10000 - 0x72A24000	(C:\Windows\system32\NLAapi.dll)
+mswsock.dll	A: 0x73960000 - 0x739AE000	(C:\Windows\System32\mswsock.dll)
+DNSAPI.dll	A: 0x72290000 - 0x7230C000	(C:\Windows\SYSTEM32\DNSAPI.dll)
+NSI.dll	A: 0x747C0000 - 0x747C7000	(C:\Windows\System32\NSI.dll)
+IPHLPAPI.DLL	A: 0x73A50000 - 0x73A7F000	(C:\Windows\SYSTEM32\IPHLPAPI.DLL)
+winrnr.dll	A: 0x72DD0000 - 0x72DDC000	(C:\Windows\System32\winrnr.dll)
+rasadhlp.dll	A: 0x72280000 - 0x72288000	(C:\Windows\System32\rasadhlp.dll)
+regex.DLL	A: 0x70630000 - 0x70661000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\regex.DLL)
+MSVCR90.dll	A: 0x6BDA0000 - 0x6BE43000	(C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9247_none_5090cb78bcba4a35\MSVCR90.dll)
+MSVCP90.dll	A: 0x6D000000 - 0x6D08E000	(C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9247_none_5090cb78bcba4a35\MSVCP90.dll)
+amzx.DLL	A: 0x70610000 - 0x7062C000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\amzx.DLL)
+MSVCR100D.dll	A: 0x6BC20000 - 0x6BD92000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCR100D.dll)
+sscanf.DLL	A: 0x00B30000 - 0x00B3D000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\sscanf.DLL)
+CVector.DLL	A: 0x6BB70000 - 0x6BC1D000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\CVector.DLL)
+MSVCP100D.dll	A: 0x6BAD0000 - 0x6BB6C000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCP100D.dll)
+bcrypt.dll	A: 0x73FF0000 - 0x7400B000	(C:\Windows\SYSTEM32\bcrypt.dll)
+
+--------------------------
+SA-MP Server: 0.3.7
+
+Exception At Address: 0x0048EA0A Module: (samp-server.exe)
+
+Registers:
+EAX: 0x69746E41	EBX: 0x00000000	ECX: 0x02459660	EDX: 0x00000000
+ESI: 0x00000010	EDI: 0x02459660	EBP: 0x00000000	ESP: 0x0019FE18
+EFLAGS: 0x00010206
+
+Stack:
++0000: 0x00000000   0x0048EA17   0x746F9800   0x00000000
++0010: 0x00000000   0x0048AC5D   0x00000000   0x000023F0
++0020: 0x0019FF80   0x002FA000   0x00010010   0x00010001
++0030: 0x000000C8   0x00001E61   0x000001E4   0x0000144C
++0040: 0x02459D28   0x656D6167   0x65646F6D   0x00003531
++0050: 0x004C0014   0x004C0010   0x002FA000   0x004A9B60
++0060: 0x0019FE68   0x0019FF70   0x0019FF70   0x0049B938
++0070: 0x004B6698   0xFFFFFFFF   0x00499BD1   0x00499BE1
++0080: 0x004A9B60   0x0019FF70   0x004A97D1   0xFFFFFFFF
++0090: 0x0049B3D6   0x00000001   0x024514A8   0x02451500
++00A0: 0x00000094   0x00000006   0x00000002   0x000023F0
++00B0: 0x00000002   0x00000000   0x00000000   0x00000000
++00C0: 0x00000000   0x00000000   0x00000000   0x00000000
++00D0: 0x00000000   0x00000000   0x00000000   0x00000000
++00E0: 0x00000000   0x00000000   0x00000000   0x00000000
++00F0: 0x00000000   0x00000000   0x00000000   0x00000000
++0100: 0x00000000   0x00000000   0x00000000   0x00000000
++0110: 0x00000000   0x00000000   0x00000000   0x00000000
++0120: 0x00000000   0x00000000   0x00000000   0x00000000
++0130: 0x0049B282   0x0049B26A   0x0049B26A   0x002FA000
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x004FA000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\samp-server.exe)
+ntdll.dll	A: 0x775E0000 - 0x77763000	(C:\Windows\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x746D0000 - 0x747B0000	(C:\Windows\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x740C0000 - 0x74261000	(C:\Windows\System32\KERNELBASE.dll)
+SHELL32.dll	A: 0x75200000 - 0x765D9000	(C:\Windows\System32\SHELL32.dll)
+msvcrt.dll	A: 0x76860000 - 0x7691E000	(C:\Windows\System32\msvcrt.dll)
+cfgmgr32.dll	A: 0x767C0000 - 0x767F6000	(C:\Windows\System32\cfgmgr32.dll)
+windows.storage.dll	A: 0x76C90000 - 0x771FE000	(C:\Windows\System32\windows.storage.dll)
+combase.dll	A: 0x74C50000 - 0x74E61000	(C:\Windows\System32\combase.dll)
+ucrtbase.dll	A: 0x76920000 - 0x76A00000	(C:\Windows\System32\ucrtbase.dll)
+RPCRT4.dll	A: 0x74270000 - 0x74331000	(C:\Windows\System32\RPCRT4.dll)
+SspiCli.dll	A: 0x740A0000 - 0x740BE000	(C:\Windows\System32\SspiCli.dll)
+CRYPTBASE.dll	A: 0x74090000 - 0x7409A000	(C:\Windows\System32\CRYPTBASE.dll)
+bcryptPrimitives.dll	A: 0x76800000 - 0x7685A000	(C:\Windows\System32\bcryptPrimitives.dll)
+sechost.dll	A: 0x74E80000 - 0x74EC1000	(C:\Windows\System32\sechost.dll)
+powrprof.dll	A: 0x74FC0000 - 0x75005000	(C:\Windows\System32\powrprof.dll)
+advapi32.dll	A: 0x77200000 - 0x77277000	(C:\Windows\System32\advapi32.dll)
+shlwapi.dll	A: 0x74530000 - 0x74576000	(C:\Windows\System32\shlwapi.dll)
+GDI32.dll	A: 0x76AA0000 - 0x76ACB000	(C:\Windows\System32\GDI32.dll)
+gdi32full.dll	A: 0x76AD0000 - 0x76C2B000	(C:\Windows\System32\gdi32full.dll)
+USER32.dll	A: 0x74340000 - 0x7449F000	(C:\Windows\System32\USER32.dll)
+win32u.dll	A: 0x76C30000 - 0x76C45000	(C:\Windows\System32\win32u.dll)
+kernel.appcore.dll	A: 0x76C50000 - 0x76C5D000	(C:\Windows\System32\kernel.appcore.dll)
+shcore.dll	A: 0x744A0000 - 0x74528000	(C:\Windows\System32\shcore.dll)
+profapi.dll	A: 0x751F0000 - 0x751FF000	(C:\Windows\System32\profapi.dll)
+WSOCK32.dll	A: 0x67F20000 - 0x67F28000	(C:\Windows\SYSTEM32\WSOCK32.dll)
+WINMM.dll	A: 0x730E0000 - 0x73104000	(C:\Windows\SYSTEM32\WINMM.dll)
+WS2_32.dll	A: 0x74BE0000 - 0x74C43000	(C:\Windows\System32\WS2_32.dll)
+WINMMBASE.dll	A: 0x006B0000 - 0x006D3000	(C:\Windows\SYSTEM32\WINMMBASE.dll)
+IMM32.DLL	A: 0x76C60000 - 0x76C85000	(C:\Windows\System32\IMM32.DLL)
+streamer.DLL	A: 0x70670000 - 0x706AE000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\streamer.DLL)
+MSVCP100.dll	A: 0x607F0000 - 0x60859000	(C:\Windows\SYSTEM32\MSVCP100.dll)
+MSVCR100.dll	A: 0x5A290000 - 0x5A34F000	(C:\Windows\SYSTEM32\MSVCR100.dll)
+mysql.DLL	A: 0x701D0000 - 0x702A4000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\mysql.DLL)
+MSVCP110.dll	A: 0x6D1E0000 - 0x6D265000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCP110.dll)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\LIBMYSQL.dll)
+MSVCR110.dll	A: 0x6D090000 - 0x6D166000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCR110.dll)
+napinsp.dll	A: 0x72DE0000 - 0x72DF2000	(C:\Windows\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x72C30000 - 0x72C46000	(C:\Windows\system32\pnrpnsp.dll)
+NLAapi.dll	A: 0x72A10000 - 0x72A24000	(C:\Windows\system32\NLAapi.dll)
+mswsock.dll	A: 0x73960000 - 0x739AE000	(C:\Windows\System32\mswsock.dll)
+DNSAPI.dll	A: 0x72290000 - 0x7230C000	(C:\Windows\SYSTEM32\DNSAPI.dll)
+NSI.dll	A: 0x747C0000 - 0x747C7000	(C:\Windows\System32\NSI.dll)
+IPHLPAPI.DLL	A: 0x73A50000 - 0x73A7F000	(C:\Windows\SYSTEM32\IPHLPAPI.DLL)
+winrnr.dll	A: 0x72DD0000 - 0x72DDC000	(C:\Windows\System32\winrnr.dll)
+rasadhlp.dll	A: 0x72280000 - 0x72288000	(C:\Windows\System32\rasadhlp.dll)
+regex.DLL	A: 0x70630000 - 0x70661000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\regex.DLL)
+MSVCP90.dll	A: 0x6D000000 - 0x6D08E000	(C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9247_none_5090cb78bcba4a35\MSVCP90.dll)
+MSVCR90.dll	A: 0x6BDA0000 - 0x6BE43000	(C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9247_none_5090cb78bcba4a35\MSVCR90.dll)
+amzx.DLL	A: 0x70610000 - 0x7062C000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\amzx.DLL)
+MSVCR100D.dll	A: 0x6BC20000 - 0x6BD92000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCR100D.dll)
+sscanf.DLL	A: 0x00B60000 - 0x00B6D000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\sscanf.DLL)
+CVector.DLL	A: 0x6BB70000 - 0x6BC1D000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\CVector.DLL)
+MSVCP100D.dll	A: 0x6BAD0000 - 0x6BB6C000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCP100D.dll)
+bcrypt.dll	A: 0x73FF0000 - 0x7400B000	(C:\Windows\SYSTEM32\bcrypt.dll)
+
+--------------------------
+SA-MP Server: 0.3.7
+
+Exception At Address: 0x0048EA0A Module: (samp-server.exe)
+
+Registers:
+EAX: 0x69746E41	EBX: 0x00000000	ECX: 0x025395C8	EDX: 0x00000000
+ESI: 0x00000010	EDI: 0x025395C8	EBP: 0x00000000	ESP: 0x0019FE18
+EFLAGS: 0x00010206
+
+Stack:
++0000: 0x00000000   0x0048EA17   0x746F9800   0x00000000
++0010: 0x00000000   0x0048AC5D   0x00000000   0x000023F0
++0020: 0x0019FF80   0x00321000   0x00010010   0x00010001
++0030: 0x000000C8   0x00001E61   0x000001E8   0x00000F1C
++0040: 0x02539CB8   0x656D6167   0x65646F6D   0x00003531
++0050: 0x004C0014   0x004C0010   0x00321000   0x004A9B60
++0060: 0x0019FE68   0x0019FF70   0x0019FF70   0x0049B938
++0070: 0x004B6698   0xFFFFFFFF   0x00499BD1   0x00499BE1
++0080: 0x004A9B60   0x0019FF70   0x004A97D1   0xFFFFFFFF
++0090: 0x0049B3D6   0x00000001   0x02531458   0x025314B0
++00A0: 0x00000094   0x00000006   0x00000002   0x000023F0
++00B0: 0x00000002   0x00000000   0x00000000   0x00000000
++00C0: 0x00000000   0x00000000   0x00000000   0x00000000
++00D0: 0x00000000   0x00000000   0x00000000   0x00000000
++00E0: 0x00000000   0x00000000   0x00000000   0x00000000
++00F0: 0x00000000   0x00000000   0x00000000   0x00000000
++0100: 0x00000000   0x00000000   0x00000000   0x00000000
++0110: 0x00000000   0x00000000   0x00000000   0x00000000
++0120: 0x00000000   0x00000000   0x00000000   0x00000000
++0130: 0x0049B282   0x0049B26A   0x0049B26A   0x00321000
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x004FA000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\samp-server.exe)
+ntdll.dll	A: 0x775E0000 - 0x77763000	(C:\Windows\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x746D0000 - 0x747B0000	(C:\Windows\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x740C0000 - 0x74261000	(C:\Windows\System32\KERNELBASE.dll)
+apphelp.dll	A: 0x73630000 - 0x736C2000	(C:\Windows\system32\apphelp.dll)
+SHELL32.dll	A: 0x75200000 - 0x765D9000	(C:\Windows\System32\SHELL32.dll)
+msvcrt.dll	A: 0x76860000 - 0x7691E000	(C:\Windows\System32\msvcrt.dll)
+cfgmgr32.dll	A: 0x767C0000 - 0x767F6000	(C:\Windows\System32\cfgmgr32.dll)
+windows.storage.dll	A: 0x76C90000 - 0x771FE000	(C:\Windows\System32\windows.storage.dll)
+combase.dll	A: 0x74C50000 - 0x74E61000	(C:\Windows\System32\combase.dll)
+ucrtbase.dll	A: 0x76920000 - 0x76A00000	(C:\Windows\System32\ucrtbase.dll)
+RPCRT4.dll	A: 0x74270000 - 0x74331000	(C:\Windows\System32\RPCRT4.dll)
+SspiCli.dll	A: 0x740A0000 - 0x740BE000	(C:\Windows\System32\SspiCli.dll)
+CRYPTBASE.dll	A: 0x74090000 - 0x7409A000	(C:\Windows\System32\CRYPTBASE.dll)
+bcryptPrimitives.dll	A: 0x76800000 - 0x7685A000	(C:\Windows\System32\bcryptPrimitives.dll)
+sechost.dll	A: 0x74E80000 - 0x74EC1000	(C:\Windows\System32\sechost.dll)
+powrprof.dll	A: 0x74FC0000 - 0x75005000	(C:\Windows\System32\powrprof.dll)
+advapi32.dll	A: 0x77200000 - 0x77277000	(C:\Windows\System32\advapi32.dll)
+shlwapi.dll	A: 0x74530000 - 0x74576000	(C:\Windows\System32\shlwapi.dll)
+GDI32.dll	A: 0x76AA0000 - 0x76ACB000	(C:\Windows\System32\GDI32.dll)
+gdi32full.dll	A: 0x76AD0000 - 0x76C2B000	(C:\Windows\System32\gdi32full.dll)
+USER32.dll	A: 0x74340000 - 0x7449F000	(C:\Windows\System32\USER32.dll)
+win32u.dll	A: 0x76C30000 - 0x76C45000	(C:\Windows\System32\win32u.dll)
+kernel.appcore.dll	A: 0x76C50000 - 0x76C5D000	(C:\Windows\System32\kernel.appcore.dll)
+shcore.dll	A: 0x744A0000 - 0x74528000	(C:\Windows\System32\shcore.dll)
+profapi.dll	A: 0x751F0000 - 0x751FF000	(C:\Windows\System32\profapi.dll)
+WSOCK32.dll	A: 0x67F20000 - 0x67F28000	(C:\Windows\SYSTEM32\WSOCK32.dll)
+WINMM.dll	A: 0x730E0000 - 0x73104000	(C:\Windows\SYSTEM32\WINMM.dll)
+WS2_32.dll	A: 0x74BE0000 - 0x74C43000	(C:\Windows\System32\WS2_32.dll)
+WINMMBASE.dll	A: 0x73030000 - 0x73053000	(C:\Windows\SYSTEM32\WINMMBASE.dll)
+IMM32.DLL	A: 0x76C60000 - 0x76C85000	(C:\Windows\System32\IMM32.DLL)
+streamer.DLL	A: 0x70670000 - 0x706AE000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\streamer.DLL)
+MSVCR100.dll	A: 0x5A290000 - 0x5A34F000	(C:\Windows\SYSTEM32\MSVCR100.dll)
+MSVCP100.dll	A: 0x607F0000 - 0x60859000	(C:\Windows\SYSTEM32\MSVCP100.dll)
+mysql.DLL	A: 0x701D0000 - 0x702A4000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\mysql.DLL)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\LIBMYSQL.dll)
+MSVCR110.dll	A: 0x6D090000 - 0x6D166000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCR110.dll)
+MSVCP110.dll	A: 0x6D1E0000 - 0x6D265000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCP110.dll)
+napinsp.dll	A: 0x72DE0000 - 0x72DF2000	(C:\Windows\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x72C30000 - 0x72C46000	(C:\Windows\system32\pnrpnsp.dll)
+NLAapi.dll	A: 0x72A10000 - 0x72A24000	(C:\Windows\system32\NLAapi.dll)
+mswsock.dll	A: 0x73960000 - 0x739AE000	(C:\Windows\System32\mswsock.dll)
+DNSAPI.dll	A: 0x72290000 - 0x7230C000	(C:\Windows\SYSTEM32\DNSAPI.dll)
+NSI.dll	A: 0x747C0000 - 0x747C7000	(C:\Windows\System32\NSI.dll)
+IPHLPAPI.DLL	A: 0x73A50000 - 0x73A7F000	(C:\Windows\SYSTEM32\IPHLPAPI.DLL)
+winrnr.dll	A: 0x72DD0000 - 0x72DDC000	(C:\Windows\System32\winrnr.dll)
+rasadhlp.dll	A: 0x72280000 - 0x72288000	(C:\Windows\System32\rasadhlp.dll)
+regex.DLL	A: 0x70630000 - 0x70661000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\regex.DLL)
+MSVCP90.dll	A: 0x6D000000 - 0x6D08E000	(C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9247_none_5090cb78bcba4a35\MSVCP90.dll)
+MSVCR90.dll	A: 0x6BDA0000 - 0x6BE43000	(C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9247_none_5090cb78bcba4a35\MSVCR90.dll)
+amzx.DLL	A: 0x70610000 - 0x7062C000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\amzx.DLL)
+MSVCR100D.dll	A: 0x6BC20000 - 0x6BD92000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCR100D.dll)
+sscanf.DLL	A: 0x00730000 - 0x0073D000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\sscanf.DLL)
+CVector.DLL	A: 0x6BB70000 - 0x6BC1D000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\CVector.DLL)
+MSVCP100D.dll	A: 0x6BAD0000 - 0x6BB6C000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCP100D.dll)
+bcrypt.dll	A: 0x73FF0000 - 0x7400B000	(C:\Windows\SYSTEM32\bcrypt.dll)
+
+--------------------------
+SA-MP Server: 0.3.7
+
+Exception At Address: 0x0048EA0A Module: (samp-server.exe)
+
+Registers:
+EAX: 0x69746E41	EBX: 0x00000000	ECX: 0x00B99660	EDX: 0x00000000
+ESI: 0x00000010	EDI: 0x00B99660	EBP: 0x00000000	ESP: 0x0019FE18
+EFLAGS: 0x00010206
+
+Stack:
++0000: 0x00000000   0x0048EA17   0x746F9800   0x00000000
++0010: 0x00000000   0x0048AC5D   0x00000000   0x000023F0
++0020: 0x0019FF80   0x0036E000   0x00010010   0x00010001
++0030: 0x000000C8   0x00001E61   0x000000B0   0x000012E8
++0040: 0x00B99D58   0x656D6167   0x65646F6D   0x00003531
++0050: 0x004C0014   0x004C0010   0x0036E000   0x004A9B60
++0060: 0x0019FE68   0x0019FF70   0x0019FF70   0x0049B938
++0070: 0x004B6698   0xFFFFFFFF   0x00499BD1   0x00499BE1
++0080: 0x004A9B60   0x0019FF70   0x004A97D1   0xFFFFFFFF
++0090: 0x0049B3D6   0x00000001   0x00B914A8   0x00B91500
++00A0: 0x00000094   0x00000006   0x00000002   0x000023F0
++00B0: 0x00000002   0x00000000   0x00000000   0x00000000
++00C0: 0x00000000   0x00000000   0x00000000   0x00000000
++00D0: 0x00000000   0x00000000   0x00000000   0x00000000
++00E0: 0x00000000   0x00000000   0x00000000   0x00000000
++00F0: 0x00000000   0x00000000   0x00000000   0x00000000
++0100: 0x00000000   0x00000000   0x00000000   0x00000000
++0110: 0x00000000   0x00000000   0x00000000   0x00000000
++0120: 0x00000000   0x00000000   0x00000000   0x00000000
++0130: 0x0049B282   0x0049B26A   0x0049B26A   0x0036E000
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x004FA000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\samp-server.exe)
+ntdll.dll	A: 0x775E0000 - 0x77763000	(C:\Windows\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x746D0000 - 0x747B0000	(C:\Windows\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x740C0000 - 0x74261000	(C:\Windows\System32\KERNELBASE.dll)
+SHELL32.dll	A: 0x75200000 - 0x765D9000	(C:\Windows\System32\SHELL32.dll)
+msvcrt.dll	A: 0x76860000 - 0x7691E000	(C:\Windows\System32\msvcrt.dll)
+cfgmgr32.dll	A: 0x767C0000 - 0x767F6000	(C:\Windows\System32\cfgmgr32.dll)
+windows.storage.dll	A: 0x76C90000 - 0x771FE000	(C:\Windows\System32\windows.storage.dll)
+combase.dll	A: 0x74C50000 - 0x74E61000	(C:\Windows\System32\combase.dll)
+ucrtbase.dll	A: 0x76920000 - 0x76A00000	(C:\Windows\System32\ucrtbase.dll)
+RPCRT4.dll	A: 0x74270000 - 0x74331000	(C:\Windows\System32\RPCRT4.dll)
+SspiCli.dll	A: 0x740A0000 - 0x740BE000	(C:\Windows\System32\SspiCli.dll)
+CRYPTBASE.dll	A: 0x74090000 - 0x7409A000	(C:\Windows\System32\CRYPTBASE.dll)
+bcryptPrimitives.dll	A: 0x76800000 - 0x7685A000	(C:\Windows\System32\bcryptPrimitives.dll)
+sechost.dll	A: 0x74E80000 - 0x74EC1000	(C:\Windows\System32\sechost.dll)
+powrprof.dll	A: 0x74FC0000 - 0x75005000	(C:\Windows\System32\powrprof.dll)
+advapi32.dll	A: 0x77200000 - 0x77277000	(C:\Windows\System32\advapi32.dll)
+shlwapi.dll	A: 0x74530000 - 0x74576000	(C:\Windows\System32\shlwapi.dll)
+GDI32.dll	A: 0x76AA0000 - 0x76ACB000	(C:\Windows\System32\GDI32.dll)
+gdi32full.dll	A: 0x76AD0000 - 0x76C2B000	(C:\Windows\System32\gdi32full.dll)
+USER32.dll	A: 0x74340000 - 0x7449F000	(C:\Windows\System32\USER32.dll)
+win32u.dll	A: 0x76C30000 - 0x76C45000	(C:\Windows\System32\win32u.dll)
+kernel.appcore.dll	A: 0x76C50000 - 0x76C5D000	(C:\Windows\System32\kernel.appcore.dll)
+shcore.dll	A: 0x744A0000 - 0x74528000	(C:\Windows\System32\shcore.dll)
+profapi.dll	A: 0x751F0000 - 0x751FF000	(C:\Windows\System32\profapi.dll)
+WSOCK32.dll	A: 0x67F20000 - 0x67F28000	(C:\Windows\SYSTEM32\WSOCK32.dll)
+WINMM.dll	A: 0x730E0000 - 0x73104000	(C:\Windows\SYSTEM32\WINMM.dll)
+WS2_32.dll	A: 0x74BE0000 - 0x74C43000	(C:\Windows\System32\WS2_32.dll)
+WINMMBASE.dll	A: 0x00540000 - 0x00563000	(C:\Windows\SYSTEM32\WINMMBASE.dll)
+IMM32.DLL	A: 0x76C60000 - 0x76C85000	(C:\Windows\System32\IMM32.DLL)
+streamer.DLL	A: 0x70670000 - 0x706AE000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\streamer.DLL)
+MSVCP100.dll	A: 0x607F0000 - 0x60859000	(C:\Windows\SYSTEM32\MSVCP100.dll)
+MSVCR100.dll	A: 0x5A290000 - 0x5A34F000	(C:\Windows\SYSTEM32\MSVCR100.dll)
+mysql.DLL	A: 0x701D0000 - 0x702A4000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\mysql.DLL)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\LIBMYSQL.dll)
+MSVCP110.dll	A: 0x6D1E0000 - 0x6D265000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCP110.dll)
+MSVCR110.dll	A: 0x6D090000 - 0x6D166000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCR110.dll)
+napinsp.dll	A: 0x72DE0000 - 0x72DF2000	(C:\Windows\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x72C30000 - 0x72C46000	(C:\Windows\system32\pnrpnsp.dll)
+NLAapi.dll	A: 0x72A10000 - 0x72A24000	(C:\Windows\system32\NLAapi.dll)
+mswsock.dll	A: 0x73960000 - 0x739AE000	(C:\Windows\System32\mswsock.dll)
+DNSAPI.dll	A: 0x72290000 - 0x7230C000	(C:\Windows\SYSTEM32\DNSAPI.dll)
+NSI.dll	A: 0x747C0000 - 0x747C7000	(C:\Windows\System32\NSI.dll)
+IPHLPAPI.DLL	A: 0x73A50000 - 0x73A7F000	(C:\Windows\SYSTEM32\IPHLPAPI.DLL)
+winrnr.dll	A: 0x72DD0000 - 0x72DDC000	(C:\Windows\System32\winrnr.dll)
+rasadhlp.dll	A: 0x72280000 - 0x72288000	(C:\Windows\System32\rasadhlp.dll)
+regex.DLL	A: 0x70630000 - 0x70661000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\regex.DLL)
+MSVCP90.dll	A: 0x6D000000 - 0x6D08E000	(C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9247_none_5090cb78bcba4a35\MSVCP90.dll)
+MSVCR90.dll	A: 0x6BDA0000 - 0x6BE43000	(C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9247_none_5090cb78bcba4a35\MSVCR90.dll)
+amzx.DLL	A: 0x70610000 - 0x7062C000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\amzx.DLL)
+MSVCR100D.dll	A: 0x6BC20000 - 0x6BD92000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCR100D.dll)
+sscanf.DLL	A: 0x00B70000 - 0x00B7D000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\sscanf.DLL)
+CVector.DLL	A: 0x6BB70000 - 0x6BC1D000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\plugins\CVector.DLL)
+MSVCP100D.dll	A: 0x6BAD0000 - 0x6BB6C000	(C:\Users\Giorgi\Desktop\Gelios RP Edit By Gilmore\MSVCP100D.dll)
+bcrypt.dll	A: 0x73FF0000 - 0x7400B000	(C:\Windows\SYSTEM32\bcrypt.dll)
+
+--------------------------
+SA-MP Server: 0.3.7-R2
+
+Exception At Address: 0x004912BA Module: (samp-server.exe)
+
+Registers:
+EAX: 0x69746E41	EBX: 0x00000000	ECX: 0x003E9378	EDX: 0x00000000
+ESI: 0x00000010	EDI: 0x003E9378	EBP: 0x00000000	ESP: 0x0014FE18
+EFLAGS: 0x00010206
+
+Stack:
++0000: 0x00000000   0x004912C7   0x7600E460   0x00000000
++0010: 0x00000000   0x0048D4DB   0x00000000   0x000023F0
++0020: 0x0014FF80   0x7FFD9000   0x0001401C   0x00010001
++0030: 0x000000C8   0x00001E61   0x000001A4   0x00001ED0
++0040: 0x003E9A70   0x656D6167   0x65646F6D   0x00003531
++0050: 0x004C4020   0x004C401C   0x7FFD9000   0x004AB4A0
++0060: 0x0014FE68   0x0014FF70   0x0014FF70   0x0049D208
++0070: 0x004BA2F8   0xFFFFFFFF   0x0049B4A1   0x0049B4B1
++0080: 0x004AB4A0   0x0014FF70   0x004AB0E1   0xFFFFFFFF
++0090: 0x0049CCA6   0x00000001   0x003E1240   0x003E1298
++00A0: 0x00000094   0x00000006   0x00000002   0x000023F0
++00B0: 0x00000002   0x00000000   0x00000000   0x00000000
++00C0: 0x00000000   0x00000000   0x00000000   0x00000000
++00D0: 0x00000000   0x00000000   0x00000000   0x00000000
++00E0: 0x00000000   0x00000000   0x00000000   0x00000000
++00F0: 0x00000000   0x00000000   0x00000000   0x00000000
++0100: 0x00000000   0x00000000   0x00000000   0x00000000
++0110: 0x00000000   0x00000000   0x00000000   0x00000000
++0120: 0x00000000   0x00000000   0x00000000   0x00000000
++0130: 0x0049CB52   0x0049CB3A   0x0049CB3A   0x7FFD9000
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x00519000	(C:\Users\MedzvelAa\Desktop\Gelios RP Edit By Gilmore\samp-server.exe)
+ntdll.dll	A: 0x77C10000 - 0x77D8A000	(C:\WINDOWS\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x75FE0000 - 0x76075000	(C:\WINDOWS\system32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x74EC0000 - 0x75037000	(C:\WINDOWS\system32\KERNELBASE.dll)
+apphelp.dll	A: 0x73720000 - 0x737B1000	(C:\WINDOWS\system32\apphelp.dll)
+SHELL32.dll	A: 0x76280000 - 0x7763F000	(C:\WINDOWS\system32\SHELL32.dll)
+msvcrt.dll	A: 0x75AA0000 - 0x75B5E000	(C:\WINDOWS\system32\msvcrt.dll)
+windows.storage.dll	A: 0x75040000 - 0x7551C000	(C:\WINDOWS\system32\windows.storage.dll)
+combase.dll	A: 0x77690000 - 0x7784A000	(C:\WINDOWS\system32\combase.dll)
+RPCRT4.dll	A: 0x77850000 - 0x77912000	(C:\WINDOWS\system32\RPCRT4.dll)
+advapi32.dll	A: 0x75B60000 - 0x75BDB000	(C:\WINDOWS\system32\advapi32.dll)
+sechost.dll	A: 0x77920000 - 0x77963000	(C:\WINDOWS\system32\sechost.dll)
+shlwapi.dll	A: 0x77640000 - 0x77684000	(C:\WINDOWS\system32\shlwapi.dll)
+GDI32.dll	A: 0x75E80000 - 0x75FD4000	(C:\WINDOWS\system32\GDI32.dll)
+USER32.dll	A: 0x77A70000 - 0x77BA4000	(C:\WINDOWS\system32\USER32.dll)
+kernel.appcore.dll	A: 0x74D80000 - 0x74D8C000	(C:\WINDOWS\system32\kernel.appcore.dll)
+shcore.dll	A: 0x75A10000 - 0x75A9D000	(C:\WINDOWS\system32\shcore.dll)
+powrprof.dll	A: 0x74D90000 - 0x74DD4000	(C:\WINDOWS\system32\powrprof.dll)
+profapi.dll	A: 0x74D60000 - 0x74D6F000	(C:\WINDOWS\system32\profapi.dll)
+WSOCK32.dll	A: 0x66410000 - 0x66418000	(C:\WINDOWS\SYSTEM32\WSOCK32.dll)
+WS2_32.dll	A: 0x77A10000 - 0x77A6B000	(C:\WINDOWS\system32\WS2_32.dll)
+WINMM.dll	A: 0x73900000 - 0x73924000	(C:\WINDOWS\SYSTEM32\WINMM.dll)
+NSI.dll	A: 0x761F0000 - 0x761F7000	(C:\WINDOWS\system32\NSI.dll)
+WINMMBASE.dll	A: 0x73880000 - 0x738A3000	(C:\WINDOWS\SYSTEM32\WINMMBASE.dll)
+cfgmgr32.dll	A: 0x74DE0000 - 0x74E16000	(C:\WINDOWS\system32\cfgmgr32.dll)
+DEVOBJ.dll	A: 0x73AE0000 - 0x73B01000	(C:\WINDOWS\SYSTEM32\DEVOBJ.dll)
+IMM32.DLL	A: 0x760A0000 - 0x760CF000	(C:\WINDOWS\system32\IMM32.DLL)
+MSCTF.dll	A: 0x75CD0000 - 0x75DF0000	(C:\WINDOWS\system32\MSCTF.dll)
+streamer.DLL	A: 0x0F630000 - 0x0F66E000	(C:\Users\MedzvelAa\Desktop\Gelios RP Edit By Gilmore\plugins\streamer.DLL)
+MSVCR100.dll	A: 0x6F5C0000 - 0x6F67F000	(C:\WINDOWS\SYSTEM32\MSVCR100.dll)
+MSVCP100.dll	A: 0x6E7D0000 - 0x6E839000	(C:\WINDOWS\SYSTEM32\MSVCP100.dll)
+mysql.DLL	A: 0x0F960000 - 0x0FA34000	(C:\Users\MedzvelAa\Desktop\Gelios RP Edit By Gilmore\plugins\mysql.DLL)
+MSVCP110.dll	A: 0x0FA80000 - 0x0FB05000	(C:\Users\MedzvelAa\Desktop\Gelios RP Edit By Gilmore\MSVCP110.dll)
+MSVCR110.dll	A: 0x0F4A0000 - 0x0F576000	(C:\Users\MedzvelAa\Desktop\Gelios RP Edit By Gilmore\MSVCR110.dll)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\MedzvelAa\Desktop\Gelios RP Edit By Gilmore\LIBMYSQL.dll)
+napinsp.dll	A: 0x69130000 - 0x69142000	(C:\WINDOWS\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x69150000 - 0x69166000	(C:\WINDOWS\system32\pnrpnsp.dll)
+NLAapi.dll	A: 0x72970000 - 0x72983000	(C:\WINDOWS\system32\NLAapi.dll)
+winrnr.dll	A: 0x69170000 - 0x6917B000	(C:\WINDOWS\System32\winrnr.dll)
+mswsock.dll	A: 0x74720000 - 0x74770000	(C:\WINDOWS\System32\mswsock.dll)
+DNSAPI.dll	A: 0x74520000 - 0x745A4000	(C:\WINDOWS\SYSTEM32\DNSAPI.dll)
+rasadhlp.dll	A: 0x6DFE0000 - 0x6DFE8000	(C:\Windows\System32\rasadhlp.dll)
+regex.DLL	A: 0x01A60000 - 0x01A91000	(C:\Users\MedzvelAa\Desktop\Gelios RP Edit By Gilmore\plugins\regex.DLL)
+MSVCR90.dll	A: 0x77DD0000 - 0x77E73000	(C:\WINDOWS\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9158_none_5091b51ebcb97cdc\MSVCR90.dll)
+MSVCP90.dll	A: 0x01AA0000 - 0x01B2E000	(C:\WINDOWS\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9158_none_5091b51ebcb97cdc\MSVCP90.dll)
+amzx.DLL	A: 0x614B0000 - 0x614CC000	(C:\Users\MedzvelAa\Desktop\Gelios RP Edit By Gilmore\plugins\amzx.DLL)
+MSVCR100D.dll	A: 0x0F230000 - 0x0F3A2000	(C:\Users\MedzvelAa\Desktop\Gelios RP Edit By Gilmore\MSVCR100D.dll)
+sscanf.DLL	A: 0x006F0000 - 0x006FD000	(C:\Users\MedzvelAa\Desktop\Gelios RP Edit By Gilmore\plugins\sscanf.DLL)
+IPHLPAPI.DLL	A: 0x73160000 - 0x73190000	(C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL)
+WINNSI.DLL	A: 0x73110000 - 0x73118000	(C:\WINDOWS\SYSTEM32\WINNSI.DLL)
+CVector.DLL	A: 0x01EE0000 - 0x01F8D000	(C:\Users\MedzvelAa\Desktop\Gelios RP Edit By Gilmore\plugins\CVector.DLL)
+MSVCP100D.dll	A: 0x0F840000 - 0x0F8DC000	(C:\Users\MedzvelAa\Desktop\Gelios RP Edit By Gilmore\MSVCP100D.dll)
+bcrypt.dll	A: 0x74CC0000 - 0x74CDD000	(C:\WINDOWS\SYSTEM32\bcrypt.dll)
