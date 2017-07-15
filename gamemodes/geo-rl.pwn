@@ -7,6 +7,15 @@ Universiteti
 pObraz1 - Iuridiuli
 pObraz3 - Med Universiteti
 pObraz4 - Jurnalistis
+
+
+Quchis Obieqtebi Frameworkistvis
+
+TAXI - 19
+BUS - 20
+PARKING - 21
+P - 22
+
 */
 
 AntiDeAMX()
@@ -15,6 +24,7 @@ AntiDeAMX()
  	#pragma unused a
 }
 #include <a_samp>
+#include <crashdetect>
 #include <sscanf2>
 #include <a_mysql>
 #include <streamer>
@@ -23,6 +33,7 @@ AntiDeAMX()
 #include <progress>
 #include <fixedmessage>
 #include <gvars>
+#include <signs>
 #include <YSI\y_va>
 #include <YSI\y_iterate>
 /* SERVER SIDE DEFINES */
@@ -32,7 +43,7 @@ new passwordonserv[16] = "parolian";
 
 #define SERVER_WEB "GEO-RL.COM"
 
-#define GMVERSION " BUILD 32"
+#define GMVERSION " BUILD 95"
 //////////////////////////
 
 /* CHAT FUNCS */
@@ -109,7 +120,7 @@ enum pkrInfo
 	pkrObjectID,
 	pkrName[48],
 	pkrMiscObjectID[MAX_POKERTABLEMISCOBJS],
-	Text3D:pkrText3DID,
+	//Text3D:pkrText3DID,
 	Float:pkrX,
 	Float:pkrY,
 	Float:pkrZ,
@@ -146,6 +157,7 @@ enum pkrInfo
 	pkrWinnerID,
 };
 new PokerTable[MAX_POKERTABLES][pkrInfo];
+
 new Float:PokerTableMiscObjOffsets[MAX_POKERTABLEMISCOBJS][6] = {
 {-1.25, -0.470, 0.1, 0.0, 0.0, 180.0}, // (Slot 2)
 {-1.25, 0.470, 0.1, 0.0, 0.0, 180.0}, // (Slot 1)
@@ -229,6 +241,38 @@ enum cmInfo
 new ChipMachine[MAX_CHIPMACHINES][cmInfo];	
 new File:logfile;
 /////
+
+
+/*
+	HINT SYSTEM VAR-S (CRAYDER)
+*/
+
+new Text:GiveHintG[1];
+new PlayerText:GiveHintP[MAX_PLAYERS][2];
+
+/* 
+	STREET SIGN SYSTEM (CRAYDER)
+*/
+
+#define MAX_STREETSIGN 50
+
+enum stSign
+{
+	stID,
+Float:	stX,
+Float:	stY,
+Float:	stZ,
+Float:	stRX,
+	stObjid,
+	stObject,
+	stTextString[64],
+Text3D:stText	
+}	
+new StreetS[MAX_STREETSIGN][stSign];
+new
+	Iterator:StreetTSIter<MAX_STREETSIGN>;
+new CreatedTS = 0;
+//
 
 #if !defined TRUE
 	new stock
@@ -1262,7 +1306,6 @@ enum PDATA
 	pSex,
 	pAge,
 	pSkin,
-	pSkin2,
 	pFractionSkin,
 	Float:pHealth,
 	Float:pArmour,
@@ -1304,6 +1347,7 @@ enum PDATA
 	pRequestCode,
 	pAdmin,
 	pHelper,
+	pSkin2,
 	pLicenses[4],
 	pBolnica,
 	pSpawn,
@@ -4045,13 +4089,13 @@ stock ResetPlayerWeaponsEx(playerid)
 	}
 }
 
-stock ShowPlayerDialogEx(playerid,dialogid,style,caption[],info[],button1[],button2[])
+/*stock ShowPlayerDialogEx(playerid,dialogid,style,caption[],info[],button1[],button2[])
 {
     if(GetPVarInt(playerid, "DialogID") != -2) return true;
     if(dialogid == -1) SetPVarInt(playerid, "DialogID", -2);
     SetPVarInt(playerid, "DialogID", dialogid);
 	return ShowPlayerDialog(playerid,dialogid,style,caption,info,button1,button2);
-}
+}*/
 
 stock ChangeVehicleColorEx(vehicleid,color1,color2)
 {
@@ -4079,7 +4123,7 @@ stock PlayerTextDrawDestroyEx(playerid,PlayerText:textdrawf)
 #define SetPlayerSkin SetPlayerSkinEx
 #define SetPlayerPos SetPlayerPosEx
 #define ResetPlayerWeapons ResetPlayerWeaponsEx
-#define ShowPlayerDialog ShowPlayerDialogEx
+//#define ShowPlayerDialog ShowPlayerDialogEx
 #define ChangeVehicleColor ChangeVehicleColorEx
 #define PlayerTextDrawDestroy PlayerTextDrawDestroyEx
 
@@ -4111,7 +4155,9 @@ public OnGameModeInit()
 		printt("Server-ze Edeba Paroli: %s", passwordonserv);
 	}
 	SendRconCommand("hostname "#SERVER_NAME #GMVERSION"");
+	//DirectoryCheck(DIRECTORY_LOGS);
 	SetGameModeText(""#GMVERSION"");
+	//dbg("OnGameModeInit", 1, "Serveris Configuracia Warmatebit Moxda. Iwyeba Bazastan Dakavshireba");
 	////////////////////
 	/*
 	    GAMEMODE FRONT-END NEW FUNCS (CRAYDER)
@@ -4120,6 +4166,8 @@ public OnGameModeInit()
 	//WEB GUI CONF
 	CreateWebGui(""#SERVER_WEB"");
 	
+	//SPAWN HINT GUI
+	CreateHintGlobalGUI();
 	
 	///
 	new str[128];
@@ -4136,8 +4184,10 @@ public OnGameModeInit()
 		print("\tpassword: "MYSQLPASS"\n");
 		GameModeExit();
 		print("Shecvalet Databaza?...\n\n");
+		printt("Vukavshirdebit Bazas. Gadaamowmet Configuracia");
+		
 	}
-	else printf("Davukavshirdit MYSQL-s\t"MYSQLDABE" (id: %d)\n", mysql);
+	else printt("DAUKAVSHIRDA");//dbg("MySQL", 2, "Davukavshirdit MySQL-s. Gamemode Warmatebit Chaitvirta. Versia: "#GMVERSION"");
 	new mi,h,addob;
 	gettime(h,mi,gCurHour);
 	SetWorldTime(h);
@@ -4159,6 +4209,7 @@ public OnGameModeInit()
     AddMenuItem(specmenu,0,"-EXIT-");
  	InitPokerTables();
 	InitChipMachines();
+	InitTrafficSign();
 	//Îñòàëüíûå îáíóëåíèÿ
 	for(new i;i<MAX_VEHICLES;i++)
 	{
@@ -5285,6 +5336,12 @@ public OnPlayerConnect(playerid)
 	for(new i;i<20;i++) SCMF(playerid,-1,"");
     SendClientMessage(playerid, 0xEAC700FF, "{9D9EA1}Welcome To :{FF6600}  Georgian Real Life / Official");
     //==================================================================//
+    
+    //SPAWN PLAYER HINT GUI
+    CreateHintPlayerGUI(playerid);
+	SetPVarInt(playerid, "HintHidden", 1);
+	   // dbg("SHEMOVIDA IGROKI", 1, "ZDAROVA IGROOOK %d",playerid);
+   // err("SHE YLEQALA SHENA: %d", playerid);
     cvector_push_back(players, playerid);
     SetPlayerDataToDefault(playerid);
 	TextDrawShowForPlayer(playerid,gText[0]);
@@ -6484,22 +6541,19 @@ stock IsIP(const str[])
 }
 public OnPlayerUpdate(playerid)
 {
-    new pip[16];
-	GetPlayerIp(playerid, pip, sizeof(pip));
-	if(strcmp(pip, "178.134.91.84", false)) //
-	if(strcmp(pip, "", false)) //
-	if(strcmp(pip, "", false)) //
-	if(strcmp(pip, "", false)) //
-	if(strcmp(pip, "", false)) //
-	if(strcmp(pip, "", false)) //Tavisufalia
-	if(strcmp(pip, "", false)) //Tavisufalia
-	if(strcmp(pip, "", false)) //Tavisufalia
+	for(new t;t<MAX_POKERTABLES;t++)
 	{
-		if(pData[playerid][pAdmin] > 0)
+	    if(IsPlayerInRangeOfPoint(playerid, 5.0, PokerTable[t][pkrX], PokerTable[t][pkrY], PokerTable[t][pkrZ]))
 		{
- 			pData[playerid][pAdmin] = 0;
-   			SendClientMessage(playerid, CRED, "Ar Xar Administrtor !");
-    	}
+		    if(GetPVarInt(playerid, "HintIsShown") == 0 && GetPVarInt(playerid, "HintHidden") == 1)
+		    {
+				GiveHint(playerid,"USAGE:", "/joinpt");
+			}
+		}
+		else if(GetPVarInt(playerid,"HintIsShown") == 1 && GetPVarInt(playerid,"HintHidden") == 0)
+		{
+			HideHint(playerid);
+		}
 	}
     if (GetPlayerState(playerid) == PLAYER_STATE_ONFOOT)
     {
@@ -8785,6 +8839,17 @@ public OnPlayerCommandText(playerid, cmdtext[])
         else return SendClientMessage(playerid,CGRAY,"Motamashes Adevs Borkilebi!");
 		return true;
 	}
+	if(!strcmp(cmd, "/createsign", true))
+	{
+		if(pData[playerid][pAdmin] < 6) return SendClientMessage(playerid, -1, "Ar Gaqvt Amis Gamoyenebis Ufleba!");
+		new Float:floatx, Float:floaty, Float:floatz;
+		GetPlayerPos(playerid, floatx, floaty, floatz);
+		tmp = strtok(cmdtext, idx);
+		new id = strval(tmp);
+		CreateTrafficSignEx(id, floatx, floaty, floatz, 0.0, 200.0, "DASAYENEBELIA");
+		Streamer_Update(playerid);
+		return 1;
+	}
 	if(!strcmp(cmd, "/creatept", true))
 	{
 		if(pData[playerid][pAdmin] < 10) return SCMF(playerid, -1, "Tqven Ar Gaqvt Amis Ufleba!");
@@ -8806,6 +8871,12 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		format(query, sizeof(query), "DELETE FROM `pokertables` WHERE `ID` = %d", PokerTable[i][ID]);
 		mysql_tquery(mysql, query, "thread_DeletePTable", "dd", playerid, i);
 		return 1;
+	}
+	if(!strcmp(cmd, "/gethintvar", true))
+	{
+	    SCMF(playerid, -1, "SHOWN HINT : %d", GetPVarInt(playerid, "HintIsShown"));
+	    SCMF(playerid, -1, "HIDDEN HINT : %d", GetPVarInt(playerid, "HintHidden"));
+	    return 1;
 	}
 	if(!strcmp(cmd, "/joinpt", true))
 	{
@@ -13115,12 +13186,12 @@ public OnVehicleStreamIn(vehicleid, forplayerid)
 
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
-	if(GetPVarInt(playerid, "DialogID") != dialogid) return true;
+	//if(GetPVarInt(playerid, "DialogID") != dialogid) return true;
 	new string[1024];
-	SetPVarInt(playerid, "DialogID", -2);
-	strreplace(inputtext, '%', '#');
-	if(strlen(inputtext) && (strfind(inputtext,"`") != -1 ||
-	strfind(inputtext,"'") != -1 )) return SendClientMessage(playerid,CGRAY,"Textshi Iqna Napovni Mcdari Simbolo.");
+	//SetPVarInt(playerid, "DialogID", -2);
+	//strreplace(inputtext, '%', '#');
+	//if(strlen(inputtext) && (strfind(inputtext,"`") != -1 ||
+	//strfind(inputtext,"'") != -1 )) return SendClientMessage(playerid,CGRAY,"Textshi Iqna Napovni Mcdari Simbolo.");
 	switch(dialogid)
 	{
 		case dLogin:
@@ -19338,7 +19409,7 @@ stock PayDay()
 	{
 		i = cvector_get(players, idxf);
 		if(!IsPlayerConnected(i)) continue;
-		if(GetPVarInt(i,"pAFK") >= 3) SendClientMessage(i,CWHITE,"Tqven Ver Miiget PayDay Imitom Rom Iyavit AFK.");
+		if(GetPVarInt(i,"pAFK") >= 3) return SendClientMessage(i,CWHITE,"Tqven Ver Miiget PayDay Imitom Rom Iyavit AFK.");
 		else
 		{
 			SendClientMessage(i,-1,"-----=====[{739F95}PayDay{ffffff}]=====-----\n");
@@ -21706,7 +21777,7 @@ public mysql_LoadPlayerData(playerid)
 	pData[playerid][pSex] = cache_get_field_content_int(0, "sex", mysql);
 	pData[playerid][pAge] = cache_get_field_content_int(0, "age", mysql);
 	pData[playerid][pSkin] = cache_get_field_content_int(0, "skin", mysql);
-	pData[playerid][pSkin2] = cache_get_field_content_int(0, "skin2", mysql);
+	//pData[playerid][pSkin2] = cache_get_field_content_int(0, "skin2", mysql);
 	pData[playerid][pFractionSkin] = cache_get_field_content_int(0, "fractionskin", mysql);
 	pData[playerid][pHealth] = cache_get_field_content_float(0, "health", mysql);
 	pData[playerid][pArmour] = cache_get_field_content_float(0, "armour", mysql);
@@ -21745,7 +21816,7 @@ public mysql_LoadPlayerData(playerid)
 	pData[playerid][pObraz4] = cache_get_field_content_int(0, "Obraz4", mysql);
 	pData[playerid][pSpawn] = cache_get_field_content_int(0, "spawn", mysql);
 	pData[playerid][pAdmin] = cache_get_field_content_int(0, "admin", mysql);
-	pData[playerid][pHelper] = cache_get_field_content_int(0, "helper", mysql);
+	//pData[playerid][pHelper] = cache_get_field_content_int(0, "helper", mysql);
 	pData[playerid][pStatus] = cache_get_field_content_int(0, "status", mysql);
 	pData[playerid][pDonate] = cache_get_field_content_int(0, "donate", mysql);
 	pData[playerid][pArmyTime] = cache_get_field_content_int(0, "armytime", mysql);
@@ -23995,7 +24066,7 @@ stock removeAllPTables()
 	for(new i = 0; i < sizeof(PokerTable); i++)
 	{
 		DestroyDynamicObject(PokerTable[i][pkrObjectID]);
-		DestroyDynamic3DTextLabel(PokerTable[i][pkrText3DID]);
+	//	DestroyDynamic3DTextLabel(PokerTable[i][pkrText3DID]);
 		for(new x; pkrInfo:x < pkrInfo; x++) PokerTable[i][pkrInfo:x] = 0;
 	}
 
@@ -24136,7 +24207,7 @@ PlacePokerTable(tableid, Float:x, Float:y, Float:z, Float:rx, Float:ry, Float:rz
 	// Create Table
 	PokerTable[tableid][pkrObjectID] = CreateDynamicObject(OBJ_POKER_TABLE, x, y, z, rx, ry, rz, virtualworld, interior, -1, DRAWDISTANCE_POKER_TABLE);
 
-    PokerTable[tableid][pkrText3DID] = CreateDynamic3DTextLabel("   [Poker Table]\ndaweret /joinpt gamosayeneblad.", 0, x, y, z + 1.3, 25.0, INVALID_PLAYER_ID, INVALID_VEHICLE_ID, 1, virtualworld, interior, -1, 30.0);
+    //PokerTable[tableid][pkrText3DID] = CreateDynamic3DTextLabel("", 0, x, y, z + 1.3, 25.0, INVALID_PLAYER_ID, INVALID_VEHICLE_ID, 1, virtualworld, interior, -1, 30.0);
     
 	SavePokerTables(tableid);
 
@@ -24151,7 +24222,7 @@ public thread_DeletePTable(playerid, tableid)
 	if(IsValidDynamicObject(PokerTable[tableid][pkrObjectID])) {
 		DestroyDynamicObject(PokerTable[tableid][pkrObjectID]);
 	}
-	DestroyDynamic3DTextLabel(PokerTable[tableid][pkrText3DID]);
+//	DestroyDynamic3DTextLabel(PokerTable[tableid][pkrText3DID]);
 	PokerTable[tableid][pkrX] = 0.0;
 	PokerTable[tableid][pkrY] = 0.0;
 	PokerTable[tableid][pkrZ] = 0.0;
@@ -24269,7 +24340,7 @@ LeavePokerTable(playerid)
 
 		new tmpString[64];
 		format(tmpString, sizeof(tmpString), "Poker Table %d", tableid);
-		Update3DTextLabelText(PokerTable[tableid][pkrText3DID], 0, tmpString);
+		//Update3DTextLabelText(PokerTable[tableid][pkrText3DID], 0, tmpString);
 
 		ResetPokerTable(tableid);
 	}
@@ -24322,128 +24393,127 @@ LeavePokerTable(playerid)
 
 ShowCasinoGamesMenu(playerid, dialogid)
 {
-	switch(dialogid)
+	if(dialogid == DIALOG_CGAMESCALLPOKER)
 	{
-		case DIALOG_CGAMESCALLPOKER:
+		if(GetPVarInt(playerid, "pkrChips") > 0)
 		{
-			if(GetPVarInt(playerid, "pkrChips") > 0) {
-				SetPVarInt(playerid, "pkrActionChoice", 1);
-
-				new tableid = GetPVarInt(playerid, "pkrTableID")-1;
-				new actualBet = PokerTable[tableid][pkrActiveBet]-GetPVarInt(playerid, "pkrCurrentBet");
-
-				new szString[128];
-				if(actualBet > GetPVarInt(playerid, "pkrChips")) {
-					format(szString, sizeof(szString), "{FFFFFF}Are you sure you want to call $%d (All-In)?:", actualBet);
-					return ShowPlayerDialog(playerid, DIALOG_CGAMESCALLPOKER, DIALOG_STYLE_MSGBOX, "{FFFFFF}Texas Holdem Poker - (Call)", szString, "All-In", "Cancel");
-				}
-				format(szString, sizeof(szString), "{FFFFFF}Are you sure you want to call $%d?:", actualBet);
-				return ShowPlayerDialog(playerid, DIALOG_CGAMESCALLPOKER, DIALOG_STYLE_MSGBOX, "{FFFFFF}Texas Holdem Poker - (Call)", szString, "Call", "Cancel");
-			} else {
-				SendClientMessage(playerid, COLOR_WHITE, "DEALER: You do not have enough funds to call.");
-				new noFundsSoundID[] = {5823, 5824, 5825};
-				new randomNoFundsSoundID = random(sizeof(noFundsSoundID));
-				PlayerPlaySound(playerid, noFundsSoundID[randomNoFundsSoundID], 0.0, 0.0, 0.0);
-			}
-		}
-		case DIALOG_CGAMESRAISEPOKER:
-		{
-			new tableid = GetPVarInt(playerid, "pkrTableID")-1;
-
 			SetPVarInt(playerid, "pkrActionChoice", 1);
-
-			if(GetPVarInt(playerid, "pkrCurrentBet")+GetPVarInt(playerid, "pkrChips") > PokerTable[tableid][pkrActiveBet]+PokerTable[tableid][pkrBlind]/2) {
-				SetPVarInt(playerid, "pkrActionChoice", 1);
-
-				new szString[128];
-				format(szString, sizeof(szString), "{FFFFFF}How much do you want to Raise? ($%d-$%d):", PokerTable[tableid][pkrActiveBet]+PokerTable[tableid][pkrBlind]/2, GetPVarInt(playerid, "pkrCurrentBet")+GetPVarInt(playerid, "pkrChips"));
-				return ShowPlayerDialog(playerid, DIALOG_CGAMESRAISEPOKER, DIALOG_STYLE_INPUT, "{FFFFFF}Texas Holdem Poker - (Raise)", szString, "Raise", "Cancel");
-			} else if(GetPVarInt(playerid, "pkrCurrentBet")+GetPVarInt(playerid, "pkrChips") == PokerTable[tableid][pkrActiveBet]+PokerTable[tableid][pkrBlind]/2) {
-				SetPVarInt(playerid, "pkrActionChoice", 1);
-
-				new szString[128];
-				format(szString, sizeof(szString), "{FFFFFF}How much do you want to Raise? (All-In):", PokerTable[tableid][pkrActiveBet]+PokerTable[tableid][pkrBlind]/2, GetPVarInt(playerid, "pkrCurrentBet")+GetPVarInt(playerid, "pkrChips"));
-				return ShowPlayerDialog(playerid, DIALOG_CGAMESRAISEPOKER, DIALOG_STYLE_INPUT, "{FFFFFF}Texas Holdem Poker - (Raise)", szString, "All-In", "Cancel");
-			} else {
-				SendClientMessage(playerid, COLOR_WHITE, "DEALER: You do not have enough funds to raise.");
-				new noFundsSoundID[] = {5823, 5824, 5825};
-				new randomNoFundsSoundID = random(sizeof(noFundsSoundID));
-				PlayerPlaySound(playerid, noFundsSoundID[randomNoFundsSoundID], 0.0, 0.0, 0.0);
-			}
-
-		}
-		case DIALOG_CGAMESBUYINPOKER:
-		{
-			new szString[386];
-			format(szString, sizeof(szString), "{FFFFFF}Please input a buy-in amount for the table:\n\nCurrent Casino Chips: {00FF00}$%d{FFFFFF}\nCurrent Poker Chips: {00FF00}$%d{FFFFFF}\nBuy-In Maximum/Minimum: {00FF00}$%d{FFFFFF}/{00FF00}$%d{FFFFFF}", GetPVarInt(playerid, "cgChips"), GetPVarInt(playerid, "pkrChips"), PokerTable[GetPVarInt(playerid, "pkrTableID")-1][pkrBuyInMax], PokerTable[GetPVarInt(playerid, "pkrTableID")-1][pkrBuyInMin]);
-			return ShowPlayerDialog(playerid, DIALOG_CGAMESBUYINPOKER, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (BuyIn Menu)", szString, "Buy In", "Leave");
-		}
-		case DIALOG_CGAMESSETUPPGAME:
-		{
 			new tableid = GetPVarInt(playerid, "pkrTableID")-1;
+			new actualBet = PokerTable[tableid][pkrActiveBet]-GetPVarInt(playerid, "pkrCurrentBet");
+			new szString[128];
+			if(actualBet > GetPVarInt(playerid, "pkrChips"))
+		 	{
+				format(szString, sizeof(szString), "{FFFFFF}Are you sure you want to call $%d (All-In)?:", actualBet);
+				return ShowPlayerDialog(playerid, DIALOG_CGAMESCALLPOKER, DIALOG_STYLE_MSGBOX, "{FFFFFF}Texas Holdem Poker - (Call)", szString, "All-In", "Cancel");
+			}
+			format(szString, sizeof(szString), "{FFFFFF}Are you sure you want to call $%d?:", actualBet);
+			return ShowPlayerDialog(playerid, DIALOG_CGAMESCALLPOKER, DIALOG_STYLE_MSGBOX, "{FFFFFF}Texas Holdem Poker - (Call)", szString, "Call", "Cancel");
+		}
+		else
+		{
+			SendClientMessage(playerid, COLOR_WHITE, "DEALER: You do not have enough funds to call.");
+			new noFundsSoundID[] = {5823, 5824, 5825};
+			new randomNoFundsSoundID = random(sizeof(noFundsSoundID));
+			PlayerPlaySound(playerid, noFundsSoundID[randomNoFundsSoundID], 0.0, 0.0, 0.0);
+		}
+	}
+	if(dialogid == DIALOG_CGAMESRAISEPOKER)
+	{
+		new tableid = GetPVarInt(playerid, "pkrTableID")-1;
+		SetPVarInt(playerid, "pkrActionChoice", 1);
+		if(GetPVarInt(playerid, "pkrCurrentBet")+GetPVarInt(playerid, "pkrChips") > PokerTable[tableid][pkrActiveBet]+PokerTable[tableid][pkrBlind]/2) {
+			SetPVarInt(playerid, "pkrActionChoice", 1);
+			new szString[128];
+			format(szString, sizeof(szString), "{FFFFFF}How much do you want to Raise? ($%d-$%d):", PokerTable[tableid][pkrActiveBet]+PokerTable[tableid][pkrBlind]/2, GetPVarInt(playerid, "pkrCurrentBet")+GetPVarInt(playerid, "pkrChips"));
+			return ShowPlayerDialog(playerid, DIALOG_CGAMESRAISEPOKER, DIALOG_STYLE_INPUT, "{FFFFFF}Texas Holdem Poker - (Raise)", szString, "Raise", "Cancel");
+		} else if(GetPVarInt(playerid, "pkrCurrentBet")+GetPVarInt(playerid, "pkrChips") == PokerTable[tableid][pkrActiveBet]+PokerTable[tableid][pkrBlind]/2) {
+			SetPVarInt(playerid, "pkrActionChoice", 1);
+			new szString[128];
+			format(szString, sizeof(szString), "{FFFFFF}How much do you want to Raise? (All-In):", PokerTable[tableid][pkrActiveBet]+PokerTable[tableid][pkrBlind]/2, GetPVarInt(playerid, "pkrCurrentBet")+GetPVarInt(playerid, "pkrChips"));
+			return ShowPlayerDialog(playerid, DIALOG_CGAMESRAISEPOKER, DIALOG_STYLE_INPUT, "{FFFFFF}Texas Holdem Poker - (Raise)", szString, "All-In", "Cancel");
+		} else {
+			SendClientMessage(playerid, COLOR_WHITE, "DEALER: You do not have enough funds to raise.");
+			new noFundsSoundID[] = {5823, 5824, 5825};
+			new randomNoFundsSoundID = random(sizeof(noFundsSoundID));
+			PlayerPlaySound(playerid, noFundsSoundID[randomNoFundsSoundID], 0.0, 0.0, 0.0);
+		}
 
-			if(GetPVarType(playerid, "pkrTableID")) {
-				new szString[512];
-
-				if(PokerTable[tableid][pkrPass][0] == EOS) {
-					format(szString, sizeof(szString), "{FFFFFF}Buy-In Max\t({00FF00}$%d{FFFFFF})\nBuy-In Min\t({00FF00}$%d{FFFFFF})\nBlind\t\t({00FF00}$%d{FFFFFF} / {00FF00}$%d{FFFFFF})\nLimit\t\t(%d)\nPassword\t(%s)\nRound Delay\t(%d)\nStart Game",
-						PokerTable[tableid][pkrBuyInMax],
-						PokerTable[tableid][pkrBuyInMin],
-						PokerTable[tableid][pkrBlind],
-						PokerTable[tableid][pkrBlind]/2,
-						PokerTable[tableid][pkrLimit],
-						"None",
-						PokerTable[tableid][pkrSetDelay]
-					);
-				} else {
-					format(szString, sizeof(szString), "{FFFFFF}Buy-In Max\t({00FF00}$%d{FFFFFF})\nBuy-In Min\t({00FF00}$%d{FFFFFF})\nBlind\t\t({00FF00}$%d{FFFFFF} / {00FF00}$%d{FFFFFF})\nLimit\t\t(%d)\nPassword\t(%s)\nRound Delay\t(%d)\nStart Game",
-						PokerTable[tableid][pkrBuyInMax],
-						PokerTable[tableid][pkrBuyInMin],
-						PokerTable[tableid][pkrBlind],
-						PokerTable[tableid][pkrBlind]/2,
-						PokerTable[tableid][pkrLimit],
-						PokerTable[tableid][pkrPass],
-						PokerTable[tableid][pkrSetDelay]
-					);
-				}
-				return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME, DIALOG_STYLE_LIST, "{FFFFFF}Casino Games - (Setup Poker Room)", szString, "Select", "Quit");
-			}
-		}
-		case DIALOG_CGAMESSETUPPGAME2:
+	}
+	if(dialogid == DIALOG_CGAMESBUYINPOKER)
+	{
+		new szString[386];
+		format(szString, sizeof(szString), "{FFFFFF}Please input a buy-in amount for the table:\n\nCurrent Casino Chips: {00FF00}$%d{FFFFFF}\nCurrent Poker Chips: {00FF00}$%d{FFFFFF}\nBuy-In Maximum/Minimum: {00FF00}$%d{FFFFFF}/{00FF00}$%d{FFFFFF}", GetPVarInt(playerid, "cgChips"), GetPVarInt(playerid, "pkrChips"), PokerTable[GetPVarInt(playerid, "pkrTableID")-1][pkrBuyInMax], PokerTable[GetPVarInt(playerid, "pkrTableID")-1][pkrBuyInMin]);
+		return ShowPlayerDialog(playerid, DIALOG_CGAMESBUYINPOKER, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (BuyIn Menu)", szString, "Buy In", "Leave");
+	}
+	if(dialogid == DIALOG_CGAMESSETUPPGAME)
+	{
+		new tableid = GetPVarInt(playerid, "pkrTableID")-1;
+		if(GetPVarType(playerid, "pkrTableID"))
 		{
-			if(GetPVarType(playerid, "pkrTableID")) {
-				return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME2, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (Buy-In Max)", "{FFFFFF}Please input a Buy-In Max:", "Change", "Back");
+			new szString[512];
+			if(PokerTable[tableid][pkrPass][0] == EOS) {
+				format(szString, sizeof(szString), "{FFFFFF}Buy-In Max\t({00FF00}$%d{FFFFFF})\nBuy-In Min\t({00FF00}$%d{FFFFFF})\nBlind\t\t({00FF00}$%d{FFFFFF} / {00FF00}$%d{FFFFFF})\nLimit\t\t(%d)\nPassword\t(%s)\nRound Delay\t(%d)\nStart Game",
+				PokerTable[tableid][pkrBuyInMax],
+				PokerTable[tableid][pkrBuyInMin],
+				PokerTable[tableid][pkrBlind],
+				PokerTable[tableid][pkrBlind]/2,
+				PokerTable[tableid][pkrLimit],
+				"None",
+				PokerTable[tableid][pkrSetDelay]
+				);
+			} else {
+				format(szString, sizeof(szString), "{FFFFFF}Buy-In Max\t({00FF00}$%d{FFFFFF})\nBuy-In Min\t({00FF00}$%d{FFFFFF})\nBlind\t\t({00FF00}$%d{FFFFFF} / {00FF00}$%d{FFFFFF})\nLimit\t\t(%d)\nPassword\t(%s)\nRound Delay\t(%d)\nStart Game",
+				PokerTable[tableid][pkrBuyInMax],
+				PokerTable[tableid][pkrBuyInMin],
+				PokerTable[tableid][pkrBlind],
+				PokerTable[tableid][pkrBlind]/2,
+				PokerTable[tableid][pkrLimit],
+				PokerTable[tableid][pkrPass],
+				PokerTable[tableid][pkrSetDelay]
+				);
 			}
+			return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME, DIALOG_STYLE_LIST, "{FFFFFF}Casino Games - (Setup Poker Room)", szString, "Select", "Quit");
 		}
-		case DIALOG_CGAMESSETUPPGAME3:
+	}
+ 	if(dialogid == DIALOG_CGAMESSETUPPGAME2)
+	{
+		if(GetPVarType(playerid, "pkrTableID"))
 		{
-			if(GetPVarType(playerid, "pkrTableID")) {
-				return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME3, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (Buy-In Min)", "{FFFFFF}Please input a Buy-In Min:", "Change", "Back");
-			}
+			return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME2, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (Buy-In Max)", "{FFFFFF}Please input a Buy-In Max:", "Change", "Back");
 		}
-		case DIALOG_CGAMESSETUPPGAME4:
-		{
-			if(GetPVarType(playerid, "pkrTableID")) {
-				return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME4, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (Blinds)", "{FFFFFF}Please input Blinds:\n\nNote: Small blinds are automatically half of a big blind.", "Change", "Back");
-			}
+	}
+	if(dialogid == DIALOG_CGAMESSETUPPGAME3)
+	{
+		if(GetPVarType(playerid, "pkrTableID")) {
+			return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME3, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (Buy-In Min)", "{FFFFFF}Please input a Buy-In Min:", "Change", "Back");
 		}
-		case DIALOG_CGAMESSETUPPGAME5:
+	}
+	if(dialogid == DIALOG_CGAMESSETUPPGAME4)
+	{
+		if(GetPVarType(playerid, "pkrTableID"))
 		{
-			if(GetPVarType(playerid, "pkrTableID")) {
-				return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME5, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (Limit)", "{FFFFFF}Please input a Player Limit (2-6):", "Change", "Back");
-			}
+			return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME4, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (Blinds)", "{FFFFFF}Please input Blinds:\n\nNote: Small blinds are automatically half of a big blind.", "Change", "Back");
 		}
-		case DIALOG_CGAMESSETUPPGAME6:
+	}
+	if(dialogid == DIALOG_CGAMESSETUPPGAME5)
+	{
+		if(GetPVarType(playerid, "pkrTableID"))
 		{
-			if(GetPVarType(playerid, "pkrTableID")) {
+			return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME5, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (Limit)", "{FFFFFF}Please input a Player Limit (2-6):", "Change", "Back");
+		}
+	}
+	if(dialogid == DIALOG_CGAMESSETUPPGAME6)
+	{
+		if(GetPVarType(playerid, "pkrTableID"))
+		{
 				return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME6, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (Password)", "{FFFFFF}Please input a Password:\n\nNote: Leave blank to have a public room", "Change", "Back");
-			}
 		}
-		case DIALOG_CGAMESSETUPPGAME7:
+	}
+	if(dialogid == DIALOG_CGAMESSETUPPGAME7)
+	{
+		if(GetPVarType(playerid, "pkrTableID"))
 		{
-			if(GetPVarType(playerid, "pkrTableID")) {
-				return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME7, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (Round Delay)", "{FFFFFF}Please input a Round Delay (15-120sec):", "Change", "Back");
-			}
+			return ShowPlayerDialog(playerid, DIALOG_CGAMESSETUPPGAME7, DIALOG_STYLE_INPUT, "{FFFFFF}Casino Games - (Round Delay)", "{FFFFFF}Please input a Round Delay (15-120sec):", "Change", "Back");
 		}
 	}
 	return 1;
@@ -24514,7 +24584,7 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
 
 			DestroyDynamicObject(objectid);
 			PokerTable[i][pkrObjectID] = CreateDynamicObject(19474, x, y, z, rx, ry, rz, vw, int);
-			PokerTable[i][pkrText3DID] = CreateDynamic3DTextLabel("   [Poker Table]\ndaweret /jointable gamosayeneblad.", -1, x, y, z + 1.3, 25.0, INVALID_PLAYER_ID, INVALID_VEHICLE_ID, 1, vw, int, -1, 30.0);
+		//	PokerTable[i][pkrText3DID] = CreateDynamic3DTextLabel("   [Poker Table]\ndaweret /joinpt gamosayeneblad.", -1, x, y, z + 1.3, 25.0, INVALID_PLAYER_ID, INVALID_VEHICLE_ID, 1, vw, int, -1, 30.0);
 			Iter_Add(POKERIter, i);
 
 			poCreatePokerObjID[playerid] = INVALID_OBJECT_ID;
@@ -24700,7 +24770,7 @@ public PokerPulse(tableid)
 	}
 
 	// 3D Text Label
-	Update3DTextLabelText(PokerTable[tableid][pkrText3DID], 0, " ");
+//	Update3DTextLabelText(PokerTable[tableid][pkrText3DID], 0, " ");
 
 	if(PokerTable[tableid][pkrActivePlayers] >= 2 && PokerTable[tableid][pkrActive] == 2) {
 
@@ -25439,20 +25509,20 @@ ShowChipMachinesMenu(playerid, dialogid)
                 case DIALOG_CMACHINEBUYSELLCHIPS:
                 {
                         new szString[256];
-                        format(szString, sizeof(szString), "{FFFFFF}Buy Chips\t({00FF00}$%d{FFFFFF})\nSell Chips\t({00FF00}%d{FFFFFF})", GetCurrencyAmount(playerid), GetChipAmount(playerid));
-                        ShowPlayerDialog(playerid, DIALOG_CMACHINEBUYSELLCHIPS, DIALOG_STYLE_LIST, "Chip Machines - (Buy/Sell Chips)", szString, "Select", "Close");
+                        format(szString, sizeof(szString), "{FFFFFF}Chipebis Yidva\t({00FF00}$%d{FFFFFF})\nChipebis Gayidva\t({00FF00}%d{FFFFFF})", GetCurrencyAmount(playerid), GetChipAmount(playerid));
+                        ShowPlayerDialog(playerid, DIALOG_CMACHINEBUYSELLCHIPS, DIALOG_STYLE_LIST, "Chipebis Manqana - (Iyidet/Gayidet Chipebi)", szString, "Archeva", "Ukan");
                 }
                 case DIALOG_CMACHINEBUYCHIPS:
                 {
                         new szString[256];
-                        format(szString, sizeof(szString), "{FFFFFF}Please input an amount you wish to purchase:\n\nCurrency: {00FF00}$%d{FFFFFF}\nChips: {00FF00}%d\n\n", GetCurrencyAmount(playerid), GetChipAmount(playerid));
-                        ShowPlayerDialog(playerid, DIALOG_CMACHINEBUYCHIPS, DIALOG_STYLE_INPUT, "Chip Machines - (Buy Chips)", szString, "Buy Chips", "Back");
+                        format(szString, sizeof(szString), "{FFFFFF}Chaweret Ramdeni Chipis Yidva Gsurt:\n\nTqveni Tanxa: {00FF00}$%d{FFFFFF}\nChipebi: {00FF00}%d\n\n", GetCurrencyAmount(playerid), GetChipAmount(playerid));
+                        ShowPlayerDialog(playerid, DIALOG_CMACHINEBUYCHIPS, DIALOG_STYLE_INPUT, "Chipebis Manqana - (Chipebis Yidva)", szString, "Yidva", "Ukan");
                 }
                 case DIALOG_CMACHINESELLCHIPS:
                 {
                         new szString[256];
-                        format(szString, sizeof(szString), "{FFFFFF}Please input an amount you wish to sell:\n\nCurrency: {00FF00}$%d{FFFFFF}\nChips: {00FF00}%d{FFFFFF}\n\n", GetCurrencyAmount(playerid), GetChipAmount(playerid));
-                        ShowPlayerDialog(playerid, DIALOG_CMACHINESELLCHIPS, DIALOG_STYLE_INPUT, "Chip Machines - (Sell Chips)", szString, "Sell Chips", "Back");
+                        format(szString, sizeof(szString), "{FFFFFF}Chaweret Ramdeni Chipi Gindat Rom Gayidot:\n\nTanxa: {00FF00}$%d{FFFFFF}\nChipebi: {00FF00}%d{FFFFFF}\n\n", GetCurrencyAmount(playerid), GetChipAmount(playerid));
+                        ShowPlayerDialog(playerid, DIALOG_CMACHINESELLCHIPS, DIALOG_STYLE_INPUT, "Chipebis Manqana - (Chipebis Gayidva)", szString, "Gayidva", "Ukan");
                 }
         }
         return 1;
@@ -25479,4 +25549,131 @@ CreateWebGui(website[])
 ShowWebGui(playerid)
 {
 	TextDrawShowForPlayer(playerid, SRVWEB[0]);
+}
+
+
+/* 
+	STREET SIGNS (CRAYDER)
+*/
+
+CreateTrafficSignEx(signobj, Float:x, Float:y, Float:z, Float:rx, Float:viewdistance, text3d[])
+{
+	new query[1024];
+	CreatedTS++;
+	StreetS[CreatedTS][stID] = CreatedTS;
+	StreetS[CreatedTS][stObjid] = signobj; 
+	StreetS[CreatedTS][stObject] = CreateTrafficSign(signobj, x, y, z, rx, viewdistance);
+	StreetS[CreatedTS][stX] = x;
+	StreetS[CreatedTS][stY] = y;
+	StreetS[CreatedTS][stZ] = z;
+	StreetS[CreatedTS][stRX] = rx;
+	StreetS[CreatedTS][stTextString] = strval(text3d);
+	StreetS[CreatedTS][stText] = Create3DTextLabel(text3d, COLOR_LIGHTRED, x, y, z, 8.0, 0);
+	format(query, sizeof(query), "INSERT INTO `stsign` (`stX`, `stY`, `stZ`, `stRX`, `stobj`, `sttext`) VALUES(%f, %f, %f, %f, %d, %s)",x,y,z,rx,signobj,text3d);
+	mysql_query(mysql, query);
+}
+
+InitTrafficSign()
+{
+	for(new i = 0; i < MAX_STREETSIGN; i++) 
+	{
+		StreetS[i][stX] = 0.0;
+		StreetS[i][stY] = 0.0;
+		StreetS[i][stZ] = 0.0;
+		StreetS[i][stRX] = 0.0;
+	}
+	mysql_tquery(mysql, "SELECT * FROM `stsign`", "LoadTrafficSigns", "");
+}
+forward LoadTrafficSigns();
+public LoadTrafficSigns()
+{
+	new rows, fields;
+	cache_get_data(rows, fields, mysql);
+
+	if(rows > 0)
+	{
+		new temp[30];
+
+		for(new i = 0; i < rows; i++)
+		{
+			cache_get_row(i, 0, temp);		StreetS[i][stID] = strval(temp);
+			cache_get_row(i, 1, temp); 		StreetS[i][stObjid] = strval(temp);
+			cache_get_row(i, 2, temp); 		StreetS[i][stX] = floatstr(temp);
+			cache_get_row(i, 3, temp);		StreetS[i][stY] = floatstr(temp);
+			cache_get_row(i, 4, temp); 		StreetS[i][stZ] = floatstr(temp);
+			cache_get_row(i, 5, temp);		StreetS[i][stRX] = floatstr(temp);
+			cache_get_row(i, 6, temp);		StreetS[i][stTextString] = strval(temp);
+			if(StreetS[i][stX] != 0.0)
+			{
+				CreateTrafficSignEx(StreetS[i][stObjid], StreetS[i][stX], StreetS[i][stY], StreetS[i][stZ], StreetS[i][stRX], 200.0, StreetS[i][stTextString]);
+			}
+			Iter_Add(StreetTSIter, i);	
+		}
+	}
+	return 1;
+}
+
+
+/*
+	HINT SYSTEM FUNCTIONS (CRAYDER)
+*/
+
+CreateHintGlobalGUI()
+{
+	GiveHintG[0] = TextDrawCreate(557.075317, 213.333496, "box");
+	TextDrawLetterSize(GiveHintG[0], 0.000000, 1.613471);
+	TextDrawTextSize(GiveHintG[0], 635.699829, 0.000000);
+	TextDrawAlignment(GiveHintG[0], 1);
+	TextDrawColor(GiveHintG[0], -1);
+	TextDrawUseBox(GiveHintG[0], 1);
+	TextDrawBoxColor(GiveHintG[0], 2139062143);
+	TextDrawSetShadow(GiveHintG[0], 0);
+	TextDrawSetOutline(GiveHintG[0], 0);
+	TextDrawBackgroundColor(GiveHintG[0], 1090519040);
+	TextDrawFont(GiveHintG[0], 1);
+	TextDrawSetProportional(GiveHintG[0], 1);
+	TextDrawSetShadow(GiveHintG[0], 0);
+}
+
+CreateHintPlayerGUI(playerid)
+{
+	GiveHintP[playerid][0] = CreatePlayerTextDraw(playerid, 558.622802, 214.733413, "USAGE:");
+	PlayerTextDrawLetterSize(playerid, GiveHintP[playerid][0], 0.196660, 1.273334);
+	PlayerTextDrawAlignment(playerid, GiveHintP[playerid][0], 1);
+	PlayerTextDrawColor(playerid, GiveHintP[playerid][0], -1);
+	PlayerTextDrawSetShadow(playerid, GiveHintP[playerid][0], 0);
+	PlayerTextDrawSetOutline(playerid, GiveHintP[playerid][0], 0);
+	PlayerTextDrawBackgroundColor(playerid, GiveHintP[playerid][0], 255);
+	PlayerTextDrawFont(playerid, GiveHintP[playerid][0], 1);
+	PlayerTextDrawSetProportional(playerid, GiveHintP[playerid][0], 1);
+	PlayerTextDrawSetShadow(playerid, GiveHintP[playerid][0], 0);
+
+	GiveHintP[playerid][1] = CreatePlayerTextDraw(playerid, 584.216552, 214.233383, "/joinpt");
+	PlayerTextDrawLetterSize(playerid, GiveHintP[playerid][1], 0.196660, 1.273334);
+	PlayerTextDrawAlignment(playerid, GiveHintP[playerid][1], 1);
+	PlayerTextDrawColor(playerid, GiveHintP[playerid][1], -16776961);
+	PlayerTextDrawSetShadow(playerid, GiveHintP[playerid][1], 1);
+	PlayerTextDrawSetOutline(playerid, GiveHintP[playerid][1], 1);
+	PlayerTextDrawBackgroundColor(playerid, GiveHintP[playerid][1], 255);
+	PlayerTextDrawFont(playerid, GiveHintP[playerid][1], 1);
+	PlayerTextDrawSetProportional(playerid, GiveHintP[playerid][1], 1);
+	PlayerTextDrawSetShadow(playerid, GiveHintP[playerid][1], 1);
+}
+
+GiveHint(playerid,usage[], hint[])
+{
+	SetPVarInt(playerid, "HintIsShown", 1);
+	SetPVarInt(playerid, "HintHidden", 0);
+	PlayerTextDrawSetString(playerid, GiveHintP[playerid][0], usage);
+	PlayerTextDrawSetString(playerid, GiveHintP[playerid][1], hint);
+	TextDrawShowForPlayer(playerid,GiveHintG[0]);
+	for(new i; i<2; i++) PlayerTextDrawShow(playerid, GiveHintP[playerid][i]);
+}
+
+HideHint(playerid)
+{
+	SetPVarInt(playerid, "HintHidden", 1);
+	SetPVarInt(playerid, "HintIsShown", 0);
+	TextDrawHideForPlayer(playerid, GiveHintG[0]);
+	for(new i; i<2; i++) PlayerTextDrawHide(playerid, GiveHintP[playerid][i]);
 }
